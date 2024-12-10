@@ -1,0 +1,18 @@
+version: '3'
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rust-webapp
+    container_name: rust-webapp
+    volumes:
+      - ./api:/api
+    working_dir: /api
+    env_file:
+      - .env
+    tty: true
+    command: /bin/sh
+    ports:
+      - 8080:8080
