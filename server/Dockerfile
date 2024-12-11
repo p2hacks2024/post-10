@@ -1,9 +1,20 @@
-FROM rust:1.62.0-slim
+FROM rust:slim
 
+# 必要なパッケージをインストール
+USER root
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libsqlite3-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# エントリポイントスクリプトをコピー
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh \
-    && adduser -q --gecos "" --disabled-login rustuser
+    && adduser --disabled-password --gecos "" rustuser
 
+# ユーザーを切り替え
 USER rustuser
 
-ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
+WORKDIR /app
+
+CMD ["cargo", "run"]
