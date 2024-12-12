@@ -2,3 +2,4 @@
 **/.venv/
 
 output.wav
+**/__pycache__/
