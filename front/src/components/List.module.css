@@ -1,0 +1,10 @@
+.list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-height: calc(100vh - 5rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
