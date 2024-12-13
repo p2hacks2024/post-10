@@ -1,5 +1,16 @@
 import { Heart } from 'lucide-react'
 import styles from './ListItem.module.css'
+import PropTypes from 'prop-types'
+
+ListItem.propTypes = {
+  sentence: PropTypes.shape({
+    score: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+  }).isRequired,
+  onLike: PropTypes.func.isRequired,
+}
 
 export default function ListItem({ sentence, onLike }) {
   return (
@@ -13,5 +24,7 @@ export default function ListItem({ sentence, onLike }) {
         </button>
       </div>
     </li>
-  )
+  );
 }
+
+
