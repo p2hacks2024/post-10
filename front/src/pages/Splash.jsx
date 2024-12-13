@@ -3,10 +3,10 @@ import './Splash.css';
 
 const Splash = ({ onEnd }) => {
   const [isFlushing, setIsFlushing] = useState(false);
-  const [toiletImage, setToiletImage] = useState('toilet.png'); // 初期トイレ画像
+  const [toiletImage, setToiletImage] = useState('illustkun.png'); // 初期トイレ画像
 
   const handleTap = () => {
-    setToiletImage('toilet_anime.png'); // 水が流れる画像に差し替え
+    setToiletImage('toiletwater.png'); // 水が流れる画像に差し替え
     setIsFlushing(true); // 水流アニメーションを開始
     setTimeout(() => {
       onEnd(); // アニメーション終了後に画面遷移
