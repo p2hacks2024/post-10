@@ -1,4 +1,4 @@
-use actix_web::{web, App, HttpServer, Responder, HttpResponse, post, get};
+use actix_web::{web, App, HttpServer, Responder, HttpResponse, post, get, put};
 use rusqlite::{params, Connection, Result};
 use serde::Serialize;
 use std::sync::{Arc, Mutex};
@@ -8,6 +8,7 @@ struct Message {
     id: i32,
     content: String,
     timestamp: String,
+    flush: i32,
 }
 
 // SQLiteデータベースを初期化
@@ -17,7 +18,8 @@ fn init_db() -> Result<Connection> {
         "CREATE TABLE IF NOT EXISTS messages (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             content TEXT NOT NULL,
-            timestamp TEXT NOT NULL
+            timestamp TEXT NOT NULL,
+            flush INTEGER DEFAULT 0
         )",
         [],
     )?;
@@ -34,8 +36,8 @@ async fn submit(
     let now = chrono::Local::now().to_rfc3339();
 
     match conn.execute(
-        "INSERT INTO messages (content, timestamp) VALUES (?1, ?2)",
-        params![body, now],
+        "INSERT INTO messages (content, flush,timestamp) VALUES (?1, ?2, ?3)",
+        params![body, 0, now],
     ) {
         Ok(_) => HttpResponse::Ok().body("Message saved successfully!"),
         Err(e) => {
@@ -49,7 +51,7 @@ async fn submit(
 #[get("/messages")]
 async fn get_messages(data: web::Data<Arc<Mutex<Connection>>>) -> impl Responder {
     let conn = data.lock().unwrap();
-    let mut stmt = match conn.prepare("SELECT id, content, timestamp FROM messages") {
+    let mut stmt = match conn.prepare("SELECT id, content, timestamp, flush FROM messages") {
         Ok(stmt) => stmt,
         Err(e) => {
             eprintln!("Error preparing statement: {}", e);
@@ -62,6 +64,7 @@ async fn get_messages(data: web::Data<Arc<Mutex<Connection>>>) -> impl Responder
             id: row.get(0)?,
             content: row.get(1)?,
             timestamp: row.get(2)?,
+            flush: row.get(3)?,
         })
     });
 
@@ -73,6 +76,26 @@ async fn get_messages(data: web::Data<Arc<Mutex<Connection>>>) -> impl Responder
         Err(e) => {
             eprintln!("Error querying messages: {}", e);
             HttpResponse::InternalServerError().body("Failed to retrieve messages")
+        }
+    }
+}
+
+// PUTエンドポイント: flushの値を一つあげる
+#[put("/increment_flush/{id}")]
+async fn increment_flush(
+    data: web::Data<Arc<Mutex<Connection>>>,
+    id: web::Path<i32>,
+) -> impl Responder {
+    let conn = data.lock().unwrap();
+
+    match conn.execute(
+        "UPDATE messages SET flush = flush + 1 WHERE id = ?1",
+        params![*id],
+    ) {
+        Ok(_) => HttpResponse::Ok().body("Flush value incremented successfully!"),
+        Err(e) => {
+            eprintln!("Error updating flush value: {}", e);
+            HttpResponse::InternalServerError().body("Failed to increment flush value")
         }
     }
 }
@@ -89,6 +112,7 @@ async fn main() -> std::io::Result<()> {
             .app_data(web::Data::new(conn.clone())) // Arc をクローン
             .service(submit)
             .service(get_messages)
+            .service(increment_flush)
     })
     .bind(("0.0.0.0", 8080))?
     .run()
