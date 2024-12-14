@@ -12,7 +12,7 @@ def move_servo(pin, angle, speed):
     pwm.start(0)  # 初期化
 
     # 現在の角度から目標角度までゆっくり動かす
-    current_angle = 0
+    current_angle = 60
     step = 1 if angle > current_angle else -1  # 角度の進む方向を決定
     for position in range(current_angle, angle + step, step):
         duty_cycle = (position / 180.0) * 10 + 2.5  # 角度をDuty比に変換
@@ -75,13 +75,13 @@ def main():
                 intensity = analysis_result.intensity_of_emotion
                 # 感情の強度に応じてサーボの角度と速度を調整
                 if intensity <= 3:
-                    angle = 0  # 感情が弱い場合は0度
+                    angle =65   # 感情が弱い場合は5度
                     speed = 0.2  # ゆっくり動かす
                 elif 4 <= intensity <= 6:
-                    angle = 45  # 中程度の感情の場合は45度
+                    angle =85   # 中程度の感情の場合は25度
                     speed = 0.1  # 通常の速度
                 else:
-                    angle = 90  # 感情が強い場合は90度
+                    angle = 110  # 感情が強い場合は50度
                     speed = 0.05  # 早く動かす
                 move_servo(9, angle, speed)
                 print(f"Servo moved to {angle}° with speed {speed}s per step, based on emotion intensity {intensity}.")
