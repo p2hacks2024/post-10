@@ -1,7 +1,5 @@
 import ListItem from './ListItem'
 import styles from './List.module.css'
-<<<<<<< HEAD
-=======
 import PropTypes from 'prop-types'
 
 List.propTypes = [{
@@ -14,7 +12,6 @@ List.propTypes = [{
   onLike: PropTypes.func.isRequired,
 }]
 
->>>>>>> 07e3838a930f7bf302c94caca5fc9f129c7a654e
 
 export default function List({ sentences, onLike }) {
   return (
