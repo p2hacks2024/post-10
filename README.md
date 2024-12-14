@@ -25,20 +25,22 @@ Flush Frustration
 
 役割分担  
 Front  
-・KatsumaAkamatsu1137  
-・Atori-Ikeyama  
-Server  
-・kokist  
-・Atori-Ikeyama  
+- KatsumaAkamatsu1137  
+- Atori-Ikeyama  
+Server
+- kokist  
+- Atori-Ikeyama  
 Hard  
-・sato1109  
-・tadaken0926  
+- sato1109  
+- tadaken0926  
 
 開発における工夫した点  
 Front  
-・わかりやすく簡潔にコードをまとめた  
+- わかりやすく簡潔にコードをまとめた  
 Server  
-・  
+- rustという言語に挑戦した．
+- EC2にデプロイした
+
 Hard  
 ・  
 
@@ -48,7 +50,7 @@ Hard
 JavaScript, CSS, Arduino, Python, Rust, 
 
 利用したフレームワーク・ライブラリ  
-Node.js, lucide-react
+Node.js, lucide-react, vite, react
 
 その他開発に使用したツール・サービス
-Docker, Git, Raspberry Pi 4, 3Dプリンタ
+Docker, Git, Raspberry Pi 4, 3Dプリンタ, AWS, EC2
