@@ -21,7 +21,7 @@
 .gauge {
   position: relative;
   background-color: #f0f0f0; /* ゲージの背景色 */
-  border: 1px solid #ccc; /* ゲージの枠線 */
+  border: 1px solid #838383; /* ゲージの枠線 */
   border-radius: 10px; /* ゲージの角丸 */
   overflow: hidden;
 }
@@ -30,7 +30,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-  background-color: red; /* 赤い部分 */
+  background-color: rgb(255, 203, 203); /* 赤い部分 */
   transition: height 0.3s ease; /* スムーズな変化 */
 }
 
@@ -38,7 +38,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: blue; /* 青い部分 */
+  background-color: #3b82f6; /* 青い部分 */
   transition: height 0.3s ease; /* スムーズな変化 */
 }
 
@@ -47,6 +47,6 @@
   left: 0;
   width: 100%;
   height: 1px; /* 境界線の太さ */
-  background-color: black; /* 境界線の色 */
+  background-color: rgb(233, 233, 233); /* 境界線の色 */
   transition: bottom 0.3s ease; /* スムーズに移動 */
 }

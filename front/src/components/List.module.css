@@ -4,7 +4,7 @@
   margin: 0;
   width: 100%;
   max-height: calc(100vh - 5rem);
-  overflow-y: auto;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
   border: 1px solid #f9f9f9; /* 全体のリスト枠を追加 */
   border-radius: 8px; /* リストの角丸 */
