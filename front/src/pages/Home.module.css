@@ -1,0 +1,23 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    width: 100vw;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  cursor: pointer; /* クリック可能にする */
+  color: #007bff; /* 色を青に変更 */
+  transition: color 0.3s ease;
+}
+  
+.title:hover {
+  color: #0056b3; /* ホバー時の色 */
+}
+  

@@ -16,5 +16,5 @@ Currently, two official plugins are available:
 - コンテナに入る時に使用 appはcompose.yamlのservicesの名前  
   ```docker compose exec app bash```
 
-- コンテナを修了する時に使用  
+- コンテナを終了する時に使用  
   ```docker compose down```
