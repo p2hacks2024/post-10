@@ -10,11 +10,11 @@ Flush Frustration
 現代社会にお疲れの皆さま
 
 利用の流れ  
-トイレ型ハードウェアに怒りや愚痴、不満を発散する
-↓
-トイレ型ハードウェアのレバーを回してそれらを水に流す
-↓
-みんなから流れてきた愚痴をアプリケーションから閲覧、共感
+トイレ型ハードウェアに怒りや愚痴、不満を発散する  
+↓  
+トイレ型ハードウェアのレバーを回してそれらを水に流す  
+↓  
+みんなから流れてきた愚痴をアプリケーションから閲覧、共感  
 
 推しポイント  
 アプリケーションだけでなくハードウェアを作成することで「水に流す（Flush）」という体験をより直接的に感じることができる
@@ -24,23 +24,23 @@ Flush Frustration
 ## 開発体制  
 
 役割分担  
-Front
-・KatsumaAkamatsu1137
-・Atori-Ikeyama
-Server
-・kokist
-・Atori-Ikeyama
-Hard
-・sato1109
-・tadaken0926
+Front  
+・KatsumaAkamatsu1137  
+・Atori-Ikeyama  
+Server  
+・kokist  
+・Atori-Ikeyama  
+Hard  
+・sato1109  
+・tadaken0926  
 
 開発における工夫した点  
-Front
-・わかりやすく簡潔にコードをまとめた
-Server
-・
-Hard
-・
+Front  
+・わかりやすく簡潔にコードをまとめた  
+Server  
+・  
+Hard  
+・  
 
 ## 開発技術 
 
