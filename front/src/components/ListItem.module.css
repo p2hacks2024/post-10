@@ -19,29 +19,39 @@
 
 .likeButton {
   display: flex;
-  align-items: center; /* アイコンと数字を中央揃え */
-  justify-content: center; /* アイコンと数字を中央揃え */
-  background-color: #e6f7ff; /* 背景色: 薄い青 */
-  color: #007bff; /* テキストの色: 普通の青 */
-  border: 1px solid #007bff; /* 枠線を細く */
+  align-items: center;
+  justify-content: center;
+  background-color: #e6f7ff; /* 背景: 薄い青 */
+  color: #0077ff; /* テキスト: 普通の青 */
+  border: 1px solid #0077ff; /* 枠線 */
   border-radius: 4px; /* 角丸 */
-  padding: 0.2rem 0.4rem; /* 内側余白を減らしてボタンを小さく */
+  padding: 0.2rem 0.4rem; /* 内側余白を減らしてボタンを小さく */ /* ボタン内の余白 */
   cursor: pointer;
-  font-size: inherit; /* ボタン内の文字サイズをそのまま継承 */
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* アニメーションの基本 */
   margin-top: 10px; /* ボタンを下げる */
 }
 
 .likeButton:hover {
-  background-color: #d0eaff; /* ホバー時の背景色 */
+  background-color: #d0eaff; /* ホバー時の色 */
 }
 
 .likeButton:active {
   transform: scale(0.95); /* 押したときに少し縮む */
 }
 
-.dropletIcon {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin-right: 0.25rem;
+.waving {
+  animation: wave 0.5s ease-in-out; /* 波打つアニメーション */
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(1); /* 元のサイズ */
+  }
+  50% {
+    transform: scale(1.2); /* 一度大きくなる */
+  }
+  100% {
+    transform: scale(1); /* 元のサイズに戻る */
+  }
 }

@@ -1,21 +1,34 @@
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import './index.css';
 import Home from './pages/Home.jsx';
 import Splash from './pages/Splash.jsx';
 
-const App = () => {
-  const [isSplashVisible, setIsSplashVisible] = useState(true);
+const App = () => (
+  <Router>
+    <Routes>
+      {/* Splash ページ */}
+      <Route
+        path="/"
+        element={
+          <SplashWrapper />
+        }
+      />
+      {/* Home ページ */}
+      <Route path="/home" element={<Home />} />
+    </Routes>
+  </Router>
+);
+
+const SplashWrapper = () => {
+  const navigate = useNavigate();
 
   const handleSplashEnd = () => {
-    setIsSplashVisible(false);
+    navigate("/home"); // Home ページに遷移
   };
 
-  return (
-    <div>
-      {isSplashVisible ? <Splash onEnd={handleSplashEnd} /> : <Home />}
-    </div>
-  );
+  return <Splash onEnd={handleSplashEnd} />;
 };
 
 createRoot(document.getElementById('root')).render(<App />);

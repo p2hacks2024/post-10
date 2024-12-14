@@ -1,4 +1,5 @@
 .main {
+  background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +8,30 @@
   box-sizing: border-box;
   height: 100vh;
   overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem; /* タイトル下の余白 */
+}
+
+.icon {
+  cursor: pointer; /* クリック可能にする */
+  width: 50px; /* アイコンの幅 */
+  height: 50px; /* アイコンの高さ */
+  margin-right: 1rem; /* タイトルとの間隔 */
+  transition: transform 0.2s ease; /* ホバー時のエフェクト */
+}
+
+.icon:hover {
+  transform: scale(1.1); /* ホバーで少し拡大 */
+}
+
+.title {
+  font-size: 1.5rem; /* タイトルの文字サイズ */
+  color: #333; /* タイトルの色 */
+  margin: 0;
 }
 
 .tabs {

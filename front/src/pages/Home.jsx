@@ -1,10 +1,20 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+//import RainDropHeader from "../components/animations/RainDropHeader";
 import List from '../components/List';
 import Loading from '../components/Loading';
+import WaveFooter from "../components/animations/WaveFooter";
 import styles from './Home.module.css';
+import toiletWaterIcon from "../assets/toiletwater.png";
 import { fetchMessages, incermentFlush } from '../repository/api';
 
 export default function Home() {
+  const navigate = useNavigate(); // React Router の useNavigate フック
+
+  const handleGoToSplash = () => {
+    navigate("/"); // Splash 画面に戻る
+  };
+
   const [sentences, setSentences] = useState([]);
   const [isRanking, setIsRanking] = useState(false); // 現在のタブ状態
 
@@ -28,6 +38,17 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+
+      {/* ページタイトル */}
+      <div className={styles.header}>
+        <img
+          src={toiletWaterIcon}
+          alt="Toilet Icon"
+          className={styles.icon}
+          onClick={handleGoToSplash} // アイコンをクリックで Splash に戻る
+        />
+        <h1 className={styles.title}>Flush Frustration</h1>
+      </div>
       {/* タブ部分 */}
       <div className={styles.tabs}>
         <button
@@ -45,6 +66,7 @@ export default function Home() {
       </div>
       <Loading isLoading={sentences.length === 0} />
       <List sentences={displayedSentences} onLike={handleLike} />
+      <WaveFooter speed={6} />
     </main>
   );
 }
