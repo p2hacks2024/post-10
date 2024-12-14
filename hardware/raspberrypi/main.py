@@ -53,8 +53,8 @@ def main():
         x2, y2, z2 = accl_record_2.BMX055_Accl()
         print(f"Sensor 2 Accl= {x2:.2f}, {y2:.2f}, {z2:.2f}")
 
-        # 録音がまだで、z1が0.70未満なら録音を開始
-        if not audio_recorded and z1 < 0.70:
+        # 録音がまだで、z1が0.85未満なら録音を開始
+        if not audio_recorded and z1 < 0.85:
             record_audio()
             audio_recorded = True  # 一度録音したのでフラグを立てる
             analysis_result = analyser.analyse('output.wav')
