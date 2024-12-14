@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import contents from '../constant/splash_content';
 import './Splash.css';
+import BubbleAnimation from '../components/BubbleAnimation';
 
 const Splash = ({ onEnd }) => {
   const [isFlushing, setIsFlushing] = useState(false);
@@ -15,13 +17,23 @@ const Splash = ({ onEnd }) => {
 
   return (
     <div className={`splash-container ${isFlushing ? 'flushing' : ''}`}>
+      <BubbleAnimation />
       <div className="toilet" onClick={handleTap}>
-        <p className="tap-instruction">トイレを流せ！！！</p>
-        <img
-          src={toiletImage} // 状態によって画像を切り替える
-          alt="Toilet"
-          className="toilet-image"
-        />
+        <p className="tap-instruction">Tap to flush!!!</p>
+        <div className="toilet-text">
+          {contents.map((content, index) => (
+            <p
+              key={index}
+              className="toilet-text-content floating-text"
+              style={{
+                animationDelay: `${Math.random() * 5}s`,
+                left: `${Math.random() * 100}%`
+              }}
+            >
+              {content}
+            </p>
+          ))}
+        </div>
       </div>
       {isFlushing && <div className="water-animation"></div>}
     </div>
