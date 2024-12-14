@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './Splash.css';
 import BubbleAnimation from '../components/splash/BubbleAnimation';
 import MessageFall from '../components/splash/MessageFall';
@@ -6,37 +7,39 @@ import MessageFall from '../components/splash/MessageFall';
 const Splash = ({ onEnd }) => {
   const [isFlushing, setIsFlushing] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      onReadyToStart();
+    }
+      , 4000);
+  }, []);
+
+  const onReadyToStart = () => {
+    const tapInstruction = document.querySelector('.tap-instruction');
+
+    tapInstruction.classList.add('ready');
+  }
+
   const handleTap = () => {
-    setIsFlushing(true); // 水流アニメーションを開始
+    setIsFlushing(true);
     setTimeout(() => {
       onEnd(); // アニメーション終了後に画面遷移
-    }, 3000); // アニメーションの長さに合わせる
+    }, 2000); // アニメーションの長さに合わせる
   };
 
   return (
     <div className={`splash-container ${isFlushing ? 'flushing' : ''}`}>
       <BubbleAnimation />
       <MessageFall />
-      {/* <div className="toilet" onClick={handleTap}>
-        <p className="tap-instruction">Tap to flush!!!</p>
-        <div className="toilet-text">
-          {contents.map((content, index) => (
-            <p
-              key={index}
-              className="toilet-text-content floating-text"
-              style={{
-                animationDelay: `${Math.random() * 5}s`,
-                left: `${Math.random() * 100}%`
-              }}
-            >
-              {content}
-            </p>
-          ))}
-        </div>
-      </div> */}
-      {isFlushing && <div className="water-animation"></div>}
+      <div className={`tap-erea ${isFlushing ? 'page-transition' : ''}`} onClick={handleTap}>
+        <p className={`tap-instruction ${isFlushing ? 'page-transition' : ''}`}>Tap to Start</p>
+      </div>
     </div>
   );
+};
+
+Splash.propTypes = {
+  onEnd: PropTypes.func.isRequired,
 };
 
 export default Splash;
