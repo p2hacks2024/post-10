@@ -1,54 +1,52 @@
-.gauge-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50px; /* 全体の幅 */
-    gap: 5px; /* アイコンとゲージの間の隙間 */
-  }
-  
-  .icon {
-    width: 40px; /* アイコンのサイズ */
-    height: 40px;
-  }
-  
-  .heart-icon {
-    color: red; /* 上のheartアイコンの色 */
-  }
-  
-  .heart-crack-icon {
-    color: blue; /* 下のheart-crackアイコンの色 */
-  }
-  
-  .gauge {
-    position: relative;
-    width: 20px; /* ゲージの幅 */
-    height: 100px; /* ゲージの高さ */
-    border: 1px solid black; /* ゲージの枠線 */
-    border-radius: 10px; /* ゲージの角丸 */
-    overflow: hidden; /* 中身がはみ出さないように */
-  }
-  
-  .gauge-red {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background-color: red; /* 赤い部分 */
-    transition: height 0.3s ease; /* スムーズな変化 */
-  }
-  
-  .gauge-blue {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: blue; /* 青い部分 */
-    transition: height 0.3s ease; /* スムーズな変化 */
-  }
-  
-  .gauge-divider {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 1px; /* 境界線の太さ */
-    background-color: black; /* 境界線の色 */
-    transition: bottom 0.3s ease; /* スムーズに移動 */
-  }
+.emotion-gauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* アイコンとゲージの間隔 */
+}
+
+.icon {
+  color: #000; /* アイコンの色 */
+}
+
+.heart-icon {
+  color: red; /* 上のHeartアイコンの色 */
+}
+
+.heart-crack-icon {
+  color: blue; /* 下のHeartCrackアイコンの色 */
+}
+
+.gauge {
+  position: relative;
+  background-color: #f0f0f0; /* ゲージの背景色 */
+  border: 1px solid #ccc; /* ゲージの枠線 */
+  border-radius: 10px; /* ゲージの角丸 */
+  overflow: hidden;
+}
+
+.gauge-red {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: red; /* 赤い部分 */
+  transition: height 0.3s ease; /* スムーズな変化 */
+}
+
+.gauge-blue {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: blue; /* 青い部分 */
+  transition: height 0.3s ease; /* スムーズな変化 */
+}
+
+.gauge-divider {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px; /* 境界線の太さ */
+  background-color: black; /* 境界線の色 */
+  transition: bottom 0.3s ease; /* スムーズに移動 */
+}

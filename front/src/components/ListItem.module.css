@@ -2,7 +2,7 @@
   display: flex;
   align-items: center; /* EmotionGauge と文章を縦位置で揃える */
   padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #f9f9f9;
 }
 
 .content {
@@ -12,26 +12,32 @@
 
 .text {
   margin: 0;
-  font-size: 1.5rem; /* テキストのフォントサイズ */
+  font-size: 1.1rem; /* テキストのフォントサイズ */
   color: #333;
   line-height: 1.5; /* 行間を調整 */
 }
 
 .likeButton {
   display: flex;
-  align-items: center;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 0.75rem;
+  align-items: center; /* アイコンと数字を中央揃え */
+  justify-content: center; /* アイコンと数字を中央揃え */
+  background-color: #e6f7ff; /* 背景色: 薄い青 */
+  color: #007bff; /* テキストの色: 普通の青 */
+  border: 1px solid #007bff; /* 枠線を細く */
+  border-radius: 4px; /* 角丸 */
+  padding: 0.2rem 0.4rem; /* 内側余白を減らしてボタンを小さく */
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+  font-size: inherit; /* ボタン内の文字サイズをそのまま継承 */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px; /* ボタンを下げる */
 }
 
 .likeButton:hover {
-  background-color: #0056b3;
+  background-color: #d0eaff; /* ホバー時の背景色 */
+}
+
+.likeButton:active {
+  transform: scale(0.95); /* 押したときに少し縮む */
 }
 
 .dropletIcon {
