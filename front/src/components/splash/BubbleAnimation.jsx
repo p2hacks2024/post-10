@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './BubbleAnimation.scss';
+import './BubbleAnimation.css';
 
 const BubbleAnimation = () => {
   const [bubbles, setBubbles] = useState([]);

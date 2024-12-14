@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import contents from '../constant/splash_content';
 import './Splash.css';
-import BubbleAnimation from '../components/BubbleAnimation';
+import BubbleAnimation from '../components/splash/BubbleAnimation';
+import MessageFall from '../components/splash/MessageFall';
 
 const Splash = ({ onEnd }) => {
   const [isFlushing, setIsFlushing] = useState(false);
-  const [toiletImage, setToiletImage] = useState('illustkun.png'); // 初期トイレ画像
 
   const handleTap = () => {
-    setToiletImage('toiletwater.png'); // 水が流れる画像に差し替え
     setIsFlushing(true); // 水流アニメーションを開始
     setTimeout(() => {
       onEnd(); // アニメーション終了後に画面遷移
@@ -18,7 +16,8 @@ const Splash = ({ onEnd }) => {
   return (
     <div className={`splash-container ${isFlushing ? 'flushing' : ''}`}>
       <BubbleAnimation />
-      <div className="toilet" onClick={handleTap}>
+      <MessageFall />
+      {/* <div className="toilet" onClick={handleTap}>
         <p className="tap-instruction">Tap to flush!!!</p>
         <div className="toilet-text">
           {contents.map((content, index) => (
@@ -34,7 +33,7 @@ const Splash = ({ onEnd }) => {
             </p>
           ))}
         </div>
-      </div>
+      </div> */}
       {isFlushing && <div className="water-animation"></div>}
     </div>
   );
