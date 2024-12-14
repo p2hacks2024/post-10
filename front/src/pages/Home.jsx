@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import List from '../components/List'
+import Loading from '../components/Loading'
 import styles from './Home.module.css'
 import { fetchMessages, incermentFlush } from '../repository/api'
 
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Sentence Rater</h1>
+      <Loading isLoading={sentences.length === 0} />
       <List sentences={sentences} onLike={handleLike} />
     </main>
   )
