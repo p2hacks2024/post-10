@@ -24,25 +24,24 @@ Flush Frustration
 ## 開発体制  
 
 役割分担  
-Front  
-- KatsumaAkamatsu1137  
-- Atori-Ikeyama  
-Server
-- kokist  
-- Atori-Ikeyama  
-Hard  
-- sato1109  
-- tadaken0926  
+- Front  
+  - KatsumaAkamatsu1137  
+  - Atori-Ikeyama  
+- Server
+  - kokist  
+  - Atori-Ikeyama  
+- Hard  
+  - sato1109  
+  - tadaken0926  
 
 開発における工夫した点  
-Front  
-- わかりやすく簡潔にコードをまとめた  
-Server  
-- rustという言語に挑戦した．
-- EC2にデプロイした
-
-Hard  
-・  
+- Front  
+  - わかりやすく簡潔にコードをまとめた  
+- Server  
+  - rustという言語に挑戦した．
+  - EC2にデプロイした
+- Hard  
+  - 
 
 ## 開発技術 
 
