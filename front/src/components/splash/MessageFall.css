@@ -1,0 +1,25 @@
+.message {
+    position: absolute;
+    top: -30%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(215, 215, 215);
+    text-shadow: 2px 2px 4px rgba(25, 42, 234, 0.5);
+    animation: fall 4s linear infinite, sway 1s ease-in-out infinite alternate;
+}
+
+@keyframes fall {
+    to {
+        top: 120%;
+    }
+}
+
+@keyframes sway {
+    from {
+        transform: translateX(0px) rotate(35deg);
+    }
+
+    to {
+        transform: translateX(200px) rotate(-35deg);
+    }
+}
