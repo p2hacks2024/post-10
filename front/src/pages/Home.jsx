@@ -11,11 +11,10 @@ export default function Home() {
   }, [])
 
   const handleLike = (id) => {
-    incermentFlush(id).then(data => {
-      setSentences(sentences.map(sentence => 
-        sentence.id === id ? { ...sentence, likes: data.likes } : sentence
+    incermentFlush(id);
+    setSentences(sentences.map(sentence => 
+        sentence.id === id ? { ...sentence, likes: sentence.likes + 1 } : sentence
       ))
-    })
   }
 
   return (
