@@ -1,6 +1,6 @@
 use actix_web::{web, App, HttpServer, Responder, HttpResponse, post, get, put};
 use rusqlite::{params, Connection, Result};
-use serde::Serialize;
+use serde::{Serialize, Deserialize};
 use std::sync::{Arc, Mutex};
 
 #[derive(Serialize)]
@@ -9,6 +9,13 @@ struct Message {
     content: String,
     timestamp: String,
     flush: i32,
+    score: i32,
+}
+
+#[derive(Deserialize)]
+struct Body {
+    content: String,
+    score: i32,
 }
 
 // SQLiteデータベースを初期化
@@ -19,7 +26,8 @@ fn init_db() -> Result<Connection> {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             content TEXT NOT NULL,
             timestamp TEXT NOT NULL,
-            flush INTEGER DEFAULT 0
+            flush INTEGER DEFAULT 0,
+            score INTEGER DEFAULT 0
         )",
         [],
     )?;
@@ -30,14 +38,14 @@ fn init_db() -> Result<Connection> {
 #[post("/submit")]
 async fn submit(
     data: web::Data<Arc<Mutex<Connection>>>,
-    body: String,
+    body: web::Json<Body>,
 ) -> impl Responder {
     let conn = data.lock().unwrap();
     let now = chrono::Local::now().to_rfc3339();
 
     match conn.execute(
-        "INSERT INTO messages (content, flush,timestamp) VALUES (?1, ?2, ?3)",
-        params![body, 0, now],
+        "INSERT INTO messages (content, flush, timestamp, score) VALUES (?1, ?2, ?3, ?4)",
+        params![body.content, 0, now, body.score],
     ) {
         Ok(_) => HttpResponse::Ok().body("Message saved successfully!"),
         Err(e) => {
@@ -51,7 +59,7 @@ async fn submit(
 #[get("/messages")]
 async fn get_messages(data: web::Data<Arc<Mutex<Connection>>>) -> impl Responder {
     let conn = data.lock().unwrap();
-    let mut stmt = match conn.prepare("SELECT id, content, timestamp, flush FROM messages") {
+    let mut stmt = match conn.prepare("SELECT id, content, timestamp, flush, score FROM messages") {
         Ok(stmt) => stmt,
         Err(e) => {
             eprintln!("Error preparing statement: {}", e);
@@ -65,6 +73,7 @@ async fn get_messages(data: web::Data<Arc<Mutex<Connection>>>) -> impl Responder
             content: row.get(1)?,
             timestamp: row.get(2)?,
             flush: row.get(3)?,
+            score: row.get(4)?,
         })
     });
 
