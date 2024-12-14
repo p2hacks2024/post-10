@@ -8,11 +8,11 @@ const fetchMessages = async () => {
     await new Promise(resolve => setTimeout(resolve, 2000))
 
     return [
-      { id: 1, text: "The quick brown fox jumps over the lazy dog.", score: 7.5, likes: 0 },
-      { id: 2, text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", score: 6.8, likes: 0 },
-      { id: 3, text: "To be or not to be, that is the question.", score: 9.2, likes: 0 },
-      { id: 4, text: "All that glitters is not gold.", score: 8.5, likes: 0 },
-      { id: 5, text: "A journey of a thousand miles begins with a single step.", score: 7.9, likes: 0 },
+      { id: 1, text: "なんで電車、遅れてるのに理由の説明ないんだろう。", score: 7.5, likes: 0 },
+      { id: 2, text: "また書類作成ミス…自分がやった方が早いんだけど。", score: 6.8, likes: 0 },
+      { id: 3, text: "天気予報、雨って言ってたのにめっちゃ晴れてる…傘持ってきた意味ない。", score: 9.2, likes: 0 },
+      { id: 4, text: "会議、なんでこんなに長いんだろう…中身ほぼないのに。", score: 8.5, likes: 0 },
+      { id: 5, text: "Wi-Fiがまた繋がらない…こういう時に限って急ぎの作業あるんだよな。", score: 7.9, likes: 0 },
     ]
 }
 

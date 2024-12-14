@@ -1,41 +1,57 @@
 .item {
-    display: flex;
-    align-items: flex-start;
-    padding: 1rem;
-    border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center; /* EmotionGauge と文章を縦位置で揃える */
+  padding: 1rem;
+  border-bottom: 1px solid #f9f9f9;
+}
+
+.content {
+  flex: 1; /* EmotionGauge の横に広がる */
+  margin-left: 1rem; /* EmotionGauge とテキストの間隔 */
+}
+
+.text {
+  margin: 0;
+  font-size: 1.1rem; /* テキストのフォントサイズ */
+  color: #333;
+  line-height: 1.5; /* 行間を調整 */
+}
+
+.likeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e6f7ff; /* 背景: 薄い青 */
+  color: #0077ff; /* テキスト: 普通の青 */
+  border: 1px solid #0077ff; /* 枠線 */
+  border-radius: 4px; /* 角丸 */
+  padding: 0.2rem 0.4rem; /* 内側余白を減らしてボタンを小さく */ /* ボタン内の余白 */
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* アニメーションの基本 */
+  margin-top: 10px; /* ボタンを下げる */
+}
+
+.likeButton:hover {
+  background-color: #d0eaff; /* ホバー時の色 */
+}
+
+.likeButton:active {
+  transform: scale(0.95); /* 押したときに少し縮む */
+}
+
+.waving {
+  animation: wave 0.5s ease-in-out; /* 波打つアニメーション */
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(1); /* 元のサイズ */
   }
-  
-  .score {
-    font-weight: bold;
-    min-width: 2.5rem;
-    text-align: center;
-    margin-right: 1rem;
-    background-color: #f0f0f0;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
+  50% {
+    transform: scale(1.2); /* 一度大きくなる */
   }
-  
-  .content {
-    flex: 1;
+  100% {
+    transform: scale(1); /* 元のサイズに戻る */
   }
-  
-  .content p {
-    margin: 0 0 0.5rem 0;
-  }
-  
-  .likeButton {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #666;
-    font-size: 0.9rem;
-  }
-  
-  .heartIcon {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.25rem;
-  }
-  
+}

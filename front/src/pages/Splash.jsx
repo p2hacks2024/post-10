@@ -1,31 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './Splash.css';
+import BubbleAnimation from '../components/splash/BubbleAnimation';
+import MessageFall from '../components/splash/MessageFall';
 
 const Splash = ({ onEnd }) => {
   const [isFlushing, setIsFlushing] = useState(false);
-  const [toiletImage, setToiletImage] = useState('illustkun.png'); // 初期トイレ画像
+
+  useEffect(() => {
+    setTimeout(() => {
+      onReadyToStart();
+    }
+      , 4000);
+  }, []);
+
+  const onReadyToStart = () => {
+    const tapInstruction = document.querySelector('.tap-instruction');
+
+    tapInstruction.classList.add('ready');
+  }
 
   const handleTap = () => {
-    setToiletImage('toiletwater.png'); // 水が流れる画像に差し替え
-    setIsFlushing(true); // 水流アニメーションを開始
+    setIsFlushing(true);
     setTimeout(() => {
       onEnd(); // アニメーション終了後に画面遷移
-    }, 3000); // アニメーションの長さに合わせる
+    }, 2000); // アニメーションの長さに合わせる
   };
 
   return (
     <div className={`splash-container ${isFlushing ? 'flushing' : ''}`}>
-      <div className="toilet" onClick={handleTap}>
-        <p className="tap-instruction">トイレを流せ！！！</p>
-        <img
-          src={toiletImage} // 状態によって画像を切り替える
-          alt="Toilet"
-          className="toilet-image"
-        />
+      <BubbleAnimation />
+      <MessageFall />
+      <div className={`tap-erea ${isFlushing ? 'page-transition' : ''}`} onClick={handleTap}>
+        <p className={`tap-instruction ${isFlushing ? 'page-transition' : ''}`}>Tap to Start</p>
       </div>
-      {isFlushing && <div className="water-animation"></div>}
     </div>
   );
+};
+
+Splash.propTypes = {
+  onEnd: PropTypes.func.isRequired,
 };
 
 export default Splash;

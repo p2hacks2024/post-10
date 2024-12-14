@@ -1,10 +1,12 @@
 .list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    max-height: calc(100vh - 5rem);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-height: calc(100vh - 5rem);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #f9f9f9; /* 全体のリスト枠を追加 */
+  border-radius: 8px; /* リストの角丸 */
+  background-color: #f9f9f9; /* 背景色 */
+}

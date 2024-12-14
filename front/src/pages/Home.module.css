@@ -1,16 +1,65 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    width: 100vw;
-    box-sizing: border-box;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  .title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: 100vw;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem; /* タイトル下の余白 */
+}
+
+.icon {
+  cursor: pointer; /* クリック可能にする */
+  width: 50px; /* アイコンの幅 */
+  height: 50px; /* アイコンの高さ */
+  margin-right: 1rem; /* タイトルとの間隔 */
+  transition: transform 0.2s ease; /* ホバー時のエフェクト */
+}
+
+.icon:hover {
+  transform: scale(1.1); /* ホバーで少し拡大 */
+}
+
+.title {
+  font-size: 1.5rem; /* タイトルの文字サイズ */
+  color: #333; /* タイトルの色 */
+  margin: 0;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd; /* タブ下に仕切り線 */
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.tab:hover {
+  color: #007bff;
+}
+
+.active {
+  color: #007bff; /* アクティブなタブの文字色 */
+  border-bottom: 3px solid #007bff; /* アクティブなタブの下線 */
+  font-weight: bold;
+}
