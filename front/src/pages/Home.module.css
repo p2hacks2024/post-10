@@ -9,8 +9,15 @@
     overflow: hidden;
   }
   
-  .title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  cursor: pointer; /* クリック可能にする */
+  color: #007bff; /* 色を青に変更 */
+  transition: color 0.3s ease;
+}
+  
+.title:hover {
+  color: #0056b3; /* ホバー時の色 */
+}
   

@@ -1,41 +1,41 @@
 .item {
-    display: flex;
-    align-items: flex-start;
-    padding: 1rem;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  .score {
-    font-weight: bold;
-    min-width: 2.5rem;
-    text-align: center;
-    margin-right: 1rem;
-    background-color: #f0f0f0;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-  }
-  
-  .content {
-    flex: 1;
-  }
-  
-  .content p {
-    margin: 0 0 0.5rem 0;
-  }
-  
-  .likeButton {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #666;
-    font-size: 0.9rem;
-  }
-  
-  .heartIcon {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.25rem;
-  }
-  
+  display: flex;
+  align-items: center; /* EmotionGauge と文章を縦位置で揃える */
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.content {
+  flex: 1; /* EmotionGauge の横に広がる */
+  margin-left: 1rem; /* EmotionGauge とテキストの間隔 */
+}
+
+.text {
+  margin: 0;
+  font-size: 1.5rem; /* テキストのフォントサイズ */
+  color: #333;
+  line-height: 1.5; /* 行間を調整 */
+}
+
+.likeButton {
+  display: flex;
+  align-items: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.likeButton:hover {
+  background-color: #0056b3;
+}
+
+.dropletIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.25rem;
+}

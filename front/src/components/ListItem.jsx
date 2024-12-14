@@ -1,5 +1,6 @@
-import { Heart } from 'lucide-react'
+import { Droplet } from 'lucide-react'
 import styles from './ListItem.module.css'
+import EmotionGauge from "./EmotionGauge";
 import PropTypes from 'prop-types'
 
 ListItem.propTypes = {
@@ -15,11 +16,14 @@ ListItem.propTypes = {
 export default function ListItem({ sentence, onLike }) {
   return (
     <li className={styles.item}>
-      <div className={styles.score}>{sentence.score.toFixed(1)}</div>
+      <EmotionGauge score={sentence.score} />
       <div className={styles.content}>
-        <p>{sentence.text}</p>
-        <button className={styles.likeButton} onClick={() => onLike(sentence.id)}>
-          <Heart className={styles.heartIcon} />
+        <p className={styles.text}>{sentence.text}</p>
+        <button
+          className={styles.likeButton}
+          onClick={() => onLike(sentence.id)}
+        >
+          <Droplet className={styles.dropletIcon} />
           <span>{sentence.likes}</span>
         </button>
       </div>
