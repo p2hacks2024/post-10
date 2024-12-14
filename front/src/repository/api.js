@@ -4,7 +4,8 @@ const fetchMessages = async () => {
 
     // This is a mock implementation of fetching data from an API.
     // sleep for 1 second to simulate network latency
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    console.log('fetching data')
+    await new Promise(resolve => setTimeout(resolve, 2000))
 
     return [
       { id: 1, text: "The quick brown fox jumps over the lazy dog.", score: 7.5, likes: 0 },
@@ -21,7 +22,7 @@ const incermentFlush = async (id) => {
 
     // This is a mock implementation of incrementing likes.
     // sleep for 1 second to simulate network latency
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise(resolve => setTimeout(resolve, 2000))
 
     return { id, likes: 1 }
 }
