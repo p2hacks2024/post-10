@@ -4,6 +4,7 @@ import smbus
 from accl_record import record_audio, AcclRecord
 from analyse_audio import AnalyseAudio
 import RPi.GPIO as GPIO
+import pygame  # 音声再生用
 
 # サーボ制御用の関数（角度と速度を調整）
 def move_servo(pin, angle, speed):
@@ -19,6 +20,14 @@ def move_servo(pin, angle, speed):
         time.sleep(speed)  # スピードに応じて待機時間を調整
 
     pwm.stop()
+
+# 音声再生用の関数
+def play_audio(file_path):
+    pygame.mixer.init()
+    pygame.mixer.music.load(file_path)
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():  # 再生が終了するまで待機
+        time.sleep(0.1)
 
 def main():
     # GPIOの設定
@@ -76,6 +85,9 @@ def main():
                     speed = 0.05  # 早く動かす
                 move_servo(9, angle, speed)
                 print(f"Servo moved to {angle}° with speed {speed}s per step, based on emotion intensity {intensity}.")
+                
+                # 音声ファイルを再生
+                play_audio("toilet_sound.wav")
             break  # 条件を満たしたらループ終了
 
         print("--------------------------------------")
