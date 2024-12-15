@@ -48,6 +48,7 @@
   padding: 0.5rem 1rem;
   background-color: transparent;
   border: none;
+  border-radius: 0px;
   font-size: 1.2rem;
   cursor: pointer;
   color: #666;
@@ -59,11 +60,11 @@
 }
 
 .tab:hover {
-  color: #007bff;
+  color: #043efb;
 }
 
 .active {
-  color: #007bff; /* アクティブなタブの文字色 */
-  border-bottom: 3px solid #007bff; /* アクティブなタブの下線 */
+  color: #043efb; /* アクティブなタブの文字色 */
+  border-bottom: 3px solid #043efb; /* アクティブなタブの下線 */
   font-weight: bold;
 }

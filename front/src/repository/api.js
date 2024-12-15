@@ -1,11 +1,11 @@
 const fetchMessages = async () => {
-    const response = await fetch('http://localhost:3001/messages')
-    return await response.json()
+  const response = await fetch("http://54.168.2.235/messages");
 
-    // This is a mock implementation of fetching data from an API.
-    // sleep for 1 second to simulate network latency
-    // console.log('fetching data')
-    // await new Promise(resolve => setTimeout(resolve, 2000))
+  const data = await response.json();
+
+  console.log(data);
+    
+  return data;
 
     // return [
     //   { id: 1, text: "なんで電車、遅れてるのに理由の説明ないんだろう。", score: 7.5, likes: 0 },
@@ -17,14 +17,11 @@ const fetchMessages = async () => {
 }
 
 const incermentFlush = async (id) => {
-    const response = await fetch(`http://localhost:3001/messages/${id}/like`, { method: 'POST' })
+    const response = await fetch(`http://54.168.2.235/incerment_flush/${id}`, {
+      method: "PUT",
+    });
+  
     return await response.json()
-
-    // This is a mock implementation of incrementing likes.
-    // sleep for 1 second to simulate network latency
-    // await new Promise(resolve => setTimeout(resolve, 2000))
-
-    // return { id, likes: 1 }
 }
 
 export {fetchMessages, incermentFlush}

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import './index.css';
