@@ -58,6 +58,10 @@
 
 ## 開発技術 
 
+システム構成
+<img width="968" alt="スクリーンショット 2024-12-15 9 50 53" src="https://github.com/user-attachments/assets/1a133160-5962-47a6-9725-d33df821c4ad" />
+
+
 利用したプログラミング言語  
 JavaScript, CSS, Arduino, Python, Rust, 
 
